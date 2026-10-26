@@ -17,7 +17,7 @@ import {
   isNumber,
 } from '../utils/weather';
 
-// One small tile, e.g. "Humidity 72%". Reused for every detail.
+
 function StatItem({ icon, label, value }) {
   return (
     <div className="stat-item">
