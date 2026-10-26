@@ -1,6 +1,6 @@
 import { Alert, AlertTitle, Button } from '@mui/material';
 
-// Titles shown for each kind of error from utils/errors.js
+
 const TITLES = {
   'no-key': 'API key missing',
   auth: 'API key problem',
