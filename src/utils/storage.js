@@ -5,7 +5,7 @@ export function loadFromStorage(key, fallbackValue) {
     const saved = window.localStorage.getItem(key);
     return saved === null ? fallbackValue : JSON.parse(saved);
   } catch {
-    // Private mode or corrupted data: just use the default.
+    
     return fallbackValue;
   }
 }
