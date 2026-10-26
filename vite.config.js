@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Basic Vite setup for a React project.
 export default defineConfig({
+  base: '/SkyCast/',
   plugins: [react()],
 });
