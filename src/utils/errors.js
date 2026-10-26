@@ -1,5 +1,4 @@
-// Turns an HTTP status code from OpenWeatherMap into a friendly error.
-// `type` lets the UI decide what to show (for example a "Retry" button).
+
 
 export class WeatherError extends Error {
   constructor(message, type) {
