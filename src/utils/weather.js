@@ -1,5 +1,4 @@
-// Helper functions for formatting and calculating weather values.
-// These functions do not call the API, so they are easy to test.
+
 
 // ---------- Basic checks ----------
 
@@ -65,10 +64,7 @@ export function getIconUrl(iconCode) {
 }
 
 // ---------- Time zones ----------
-// The API gives times as Unix timestamps (seconds, UTC) and the city's
-// offset from UTC in seconds (e.g. 19800 for India, +5:30).
-// We add the offset and then read the date with UTC methods. This gives
-// the city's local time, no matter where the user's computer is.
+
 
 export function toCityDate(unixSeconds, timezoneOffset = 0) {
   return new Date((unixSeconds + timezoneOffset) * 1000);
@@ -118,16 +114,7 @@ export function formatUtcOffset(timezoneOffset) {
 
 const INTERVALS_PER_FULL_DAY = 8; // 24 hours / 3-hour steps
 
-// Groups the 3-hour forecast entries by the city's local date and works out
-// an estimated High and Low for each day from the entries in that day.
-//
-// Notes:
-// - We use each entry's main.temp. The forecast's own temp_min/temp_max
-//   describe variation across a large city at that moment, not the daily range.
-// - Readings are every 3 hours, so the real peak can fall between two of
-//   them. That is why the values are labelled as estimates.
-// - Days with fewer than 8 entries (usually today and the last day) are
-//   marked as partial, because part of the day is not covered.
+
 export function buildDailyForecast(list, timezoneOffset, nowSeconds = Date.now() / 1000) {
   if (!Array.isArray(list) || list.length === 0) return [];
 
@@ -197,7 +184,6 @@ export function getUpcomingIntervals(list, count = 8, nowSeconds = Date.now() / 
 }
 
 // ---------- Air quality ----------
-// OpenWeatherMap uses its own 1-5 index (not the 0-500 US AQI).
 
 export const AQI_LEVELS = {
   1: { label: 'Good', color: '#22c55e', advice: 'Air quality is satisfactory.' },
@@ -219,7 +205,7 @@ export const POLLUTANT_NAMES = {
 };
 
 // ---------- UV index ----------
-// WHO categories for the UV index.
+
 export function getUvCategory(uvi) {
   if (!isNumber(uvi)) return null;
   if (uvi < 3) return { label: 'Low', color: '#22c55e' };
