@@ -1,7 +1,3 @@
-// All calls to the OpenWeatherMap API live in this file.
-// Every request asks for metric units (Celsius, m/s). The app converts to
-// Fahrenheit only when it displays a value, so nothing is converted twice.
-
 import { getErrorForStatus, getMissingKeyError, getNetworkError } from './errors';
 
 // Vite reads this from .env.local. It is never logged or saved anywhere.
@@ -52,15 +48,4 @@ export function fetchForecast(lat, lon) {
 // Current air pollution for a location (AQI on a 1-5 scale).
 export function fetchAirPollution(lat, lon) {
   return requestJson('/data/2.5/air_pollution', { lat, lon });
-}
-
-// UV index and official alerts. These only exist in One Call API 3.0,
-// which needs a separate subscription. A normal free key returns 401 here.
-export function fetchUvAndAlerts(lat, lon) {
-  return requestJson('/data/3.0/onecall', {
-    lat,
-    lon,
-    units: 'metric',
-    exclude: 'minutely,hourly,daily',
-  });
 }
