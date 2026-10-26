@@ -1,5 +1,4 @@
-// Small helpers for localStorage. Only non-sensitive things are stored here:
-// the temperature unit and the recent search history. Never the API key.
+
 
 export function loadFromStorage(key, fallbackValue) {
   try {
@@ -15,6 +14,6 @@ export function saveToStorage(key, value) {
   try {
     window.localStorage.setItem(key, JSON.stringify(value));
   } catch {
-    // Storage may be full or blocked. The app still works without it.
+    
   }
 }
